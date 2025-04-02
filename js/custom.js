@@ -163,3 +163,50 @@ $(document).ready(function () {
 
     });
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    const portfolioItems = document.querySelectorAll('.portfolio_item');
+    const modalTitle = document.querySelector('.modal-content h2');
+    const modalDescription = document.querySelector('.modal-content p');
+    const modalImage = document.querySelector('.modal-content img');
+    const modalExtraContent = document.querySelector('#extra-content');
+    const pdfViewer = document.querySelector('#pdf-viewer');
+    const videoViewer = document.querySelector('#video-viewer');
+
+    portfolioItems.forEach(item => {
+        item.addEventListener('click', function (event) {
+            event.preventDefault();
+            const title = this.getAttribute('data-title');
+            const description = this.getAttribute('data-description');
+            const image = this.getAttribute('data-image');
+            const extraContent = this.getAttribute('data-extra');
+            const pdf = this.getAttribute('data-pdf');
+            const video = this.getAttribute('data-video');
+
+            // Update modal content
+            modalTitle.innerHTML = title;
+            modalDescription.innerHTML = description;
+            modalImage.setAttribute('src', image);
+            modalExtraContent.innerHTML = extraContent || '';
+
+            // Handle PDF display
+            if (pdf) {
+                pdfViewer.setAttribute('src', pdf);
+                pdfViewer.style.display = 'block';
+            } else {
+                pdfViewer.style.display = 'none';
+                pdfViewer.setAttribute('src', '');
+            }
+
+            // Handle Video display
+            if (video) {
+                videoViewer.querySelector('source').setAttribute('src', video);
+                videoViewer.style.display = 'block';
+                videoViewer.load(); // Reload the video source
+            } else {
+                videoViewer.style.display = 'none';
+                videoViewer.querySelector('source').setAttribute('src', '');
+            }
+        });
+    });
+});

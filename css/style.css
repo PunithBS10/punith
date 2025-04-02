@@ -581,8 +581,8 @@ a.active {
 }
 
 .portfolio_item img {
-    -webkit-filter: none;
-    filter: none;
+    -webkit-filter: none;    /* Remove the grayscale filter */
+    filter: none;  /* Remove the grayscale filter */
 }
 
 .portfolio-padding {
