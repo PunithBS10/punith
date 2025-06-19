@@ -801,3 +801,13 @@ fieldset {
         font-size: 10px;
     }
 }
+
+/* Force uniform image/video thumbnail sizes */
+.portfolio_item img {
+    width: 100%;
+    height: 250px;           /* Adjust height as needed */
+    object-fit: cover;       /* Ensures images/videos fill and crop properly */
+    display: block;
+    margin: 0 auto;
+    border-radius: 5px;
+}
