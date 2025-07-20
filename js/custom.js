@@ -106,6 +106,29 @@ $(document).ready(function () {
     //animatedModal
     $("#demo01,#demo02,#demo03,#demo04,#demo05,#demo06,#demo07,#demo08,#demo09").animatedModal();
 
+    // View All functionality
+    $('#viewAllBtn').click(function() {
+        var $container = $('.portfolio_container');
+        var $btn = $(this);
+        
+        if ($container.hasClass('show-all')) {
+            $container.removeClass('show-all');
+            $btn.text('View All');
+            // Scroll back to portfolio section
+            $('html, body').animate({
+                scrollTop: $('#projects').offset().top - 100
+            }, 600);
+        } else {
+            $container.addClass('show-all');
+            $btn.text('Show Less');
+        }
+        
+        // Re-trigger isotope layout after showing/hiding items
+        setTimeout(function() {
+            $container.isotope('layout');
+        }, 100);
+    });
+
     // Contact Form 	
 
     // validate contact form
