@@ -186,7 +186,15 @@ document.addEventListener('DOMContentLoaded', function () {
             // Update modal content
             modalTitle.innerHTML = title;
             modalDescription.innerHTML = description;
-            modalImage.setAttribute('src', image);
+            
+            // Handle image display
+            if (image) {
+                modalImage.setAttribute('src', image);
+                modalImage.style.display = 'block';
+            } else {
+                modalImage.style.display = 'none';
+            }
+            
             modalExtraContent.innerHTML = extraContent || '';
 
             // Handle PDF display
@@ -198,11 +206,20 @@ document.addEventListener('DOMContentLoaded', function () {
                 pdfViewer.setAttribute('src', '');
             }
 
-            // Handle Video display
+            // Handle YouTube Video display
             if (video) {
-                videoViewer.querySelector('source').setAttribute('src', video);
-                videoViewer.style.display = 'block';
-                videoViewer.load(); // Reload the video source
+                // Check if it's a YouTube URL
+                if (video.includes('youtube.com/embed/') || video.includes('youtu.be/')) {
+                    // Create YouTube iframe
+                    const youtubeIframe = `<iframe width="100%" height="400" src="${video}" frameborder="0" allowfullscreen></iframe>`;
+                    modalExtraContent.innerHTML = (extraContent || '') + '<br><br>' + youtubeIframe;
+                    videoViewer.style.display = 'none';
+                } else {
+                    // Handle regular video files
+                    videoViewer.querySelector('source').setAttribute('src', video);
+                    videoViewer.style.display = 'block';
+                    videoViewer.load();
+                }
             } else {
                 videoViewer.style.display = 'none';
                 videoViewer.querySelector('source').setAttribute('src', '');

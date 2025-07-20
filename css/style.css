@@ -312,7 +312,6 @@ a.active {
 .about-border {
     position: absolute;
     border: 10px solid #425BB5;
-    
     left: 150px;
     width: calc(68% + 20px);
     height: calc(97% + 20px);
@@ -785,12 +784,15 @@ fieldset {
         height: 600px;
     }
     .about-border {
-        width: 265px;
+        left: 20px;
+        width: calc(100% - 60px);
+        height: calc(90% + 20px);
     }
     .portfolio .categories-grid .categories ul li {
         list-style: none;
         margin: 10px 0;
     }
+}
 }
 
 @media (max-width: 420px) {
@@ -799,6 +801,11 @@ fieldset {
     }
     nav li a {
         font-size: 10px;
+    }
+    .about-border {
+        left: 15px;
+        width: calc(100% - 50px);
+        height: calc(85% + 20px);
     }
 }
 
@@ -810,4 +817,21 @@ fieldset {
     display: block;
     margin: 0 auto;
     border-radius: 5px;
+}
+
+/* Additional mobile responsiveness for about section */
+@media (max-width: 768px) {
+    .about-border {
+        left: 50px;
+        width: calc(80% + 20px);
+        height: calc(95% + 20px);
+    }
+}
+
+@media (max-width: 600px) {
+    .about-border {
+        left: 30px;
+        width: calc(90% + 20px);
+        height: calc(92% + 20px);
+    }
 }
