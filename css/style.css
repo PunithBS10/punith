@@ -841,6 +841,8 @@ fieldset {
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(66, 91, 181, 0.3);
+    display: inline-block;
+    text-decoration: none;
 }
 
 .view-all-btn:hover {
@@ -848,6 +850,7 @@ fieldset {
     color: #fff;
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(66, 91, 181, 0.4);
+    text-decoration: none;
 }
 
 .view-all-btn:active {
@@ -856,7 +859,7 @@ fieldset {
 }
 
 /* Hide portfolio items beyond the first 9 initially */
-.portfolio_container .portfolio-item:nth-child(n+7) {
+.portfolio_container .portfolio-item:nth-child(n+10) {
     display: none;
 }
 
